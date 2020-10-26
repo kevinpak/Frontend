@@ -1,0 +1,245 @@
+// COLOR - CART-PACKAGING
+$colorBlack: #000;
+$colorWhite:#fff;
+$colorBlue: #1698d9;
+$colorBlueSecondary: #2ea8e6;
+$colorRed: #d91667;
+$colorRedSecondary: #e62e7a;
+$colorYellow: #ff6;
+$colorSilver:#666;
+$colorSilverSecondry: #b3b3b3;
+$disabledColorPrimary: rgba(179, 179, 179, 0.502);
+$disabledColorSecondary: rgba(179, 179, 179, 0.502);
+
+@mixin changColor($color) {
+  &,
+  .cart-packaging__weight {
+    transform: background-color 0.5s ease;
+    background-color: $color;
+  }
+}
+
+@mixin disabledColor($disabledColorPrimary, $disabledColorSecondary) {
+  .cart-packaging {
+    &__body {
+      background-color: #b3b3b3;
+    }
+
+    &__appreciation {
+      color: $disabledColorSecondary;
+    }
+
+    &__title {
+      color: $disabledColorSecondary;
+    }
+
+    &__sub-title {
+      color: $disabledColorSecondary;
+    }
+
+    &__inner {
+      background-color: rgb(242, 242, 242);
+    }
+
+    &__specifics {
+      color: $disabledColorSecondary;
+    }
+
+    &__picture {
+      opacity: 0.5;
+    }
+
+    &__weight {
+      background-color: #b3b3b3;
+    }
+  }
+}
+
+.cart-packaging {
+  max-width: 352px;
+  width: 100%;
+
+  @media (min-width: 320px) {
+    margin-bottom: 35px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  @media (min-width: 768px) {
+    padding: 0 15px;
+  }
+
+  @media (min-width: 1025px) {
+    margin-bottom: 0;
+    padding: 0;
+    max-width: 322px;
+  }
+
+  &__body {
+    margin: 0 auto 15px;
+    padding: 4px;
+    width: 322px;
+    height: 480px;
+    position: relative;
+    clip-path: polygon(14% 0, 100% 0, 100% 100%, 0 100%, 0 9%);
+    background-color: $colorBlue;
+    border-radius: 12px;
+    cursor: pointer;
+
+    @media (max-width: 370px) {
+      width: 100%;
+    }
+
+    &:hover {
+      @include changColor($colorBlueSecondary);
+    }
+
+    &--selected {
+      @include changColor($colorRed);
+
+      &:hover {
+        @include changColor($colorRed);
+      }
+    }
+
+    &--visited {
+      @include changColor($colorRed);
+
+      &:hover {
+        @include changColor($colorRedSecondary);
+
+        .cart-packaging__appreciation--visited {
+          transform: color 0.5 ease;
+          color: $colorRedSecondary;
+        }
+      }
+    }
+
+    &--disabled {
+      cursor: no-drop;
+      caret-color: $colorRed;
+
+      @include changColor($colorSilverSecondry);
+      @include disabledColor($disabledColorPrimary, $disabledColorSecondary);
+
+      &::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        right: 0;
+        z-index: 20;
+      }
+
+      &:hover {
+        @include changColor($colorSilverSecondry);
+      }
+    }
+  }
+
+  &__inner {
+    padding: 18px 46px 20px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    font-weight: 100;
+    position: relative;
+    z-index: 10;
+    background-color: $colorWhite;
+    clip-path: polygon(14% 0, 100% 0, 100% 100%, 0 100%, 0 9%);
+    border-radius: 9px;
+    overflow: hidden;
+  }
+
+  &__appreciation {
+    margin-bottom: 13px;
+    font-size: 16px;
+    font-weight: normal;
+    color: $colorSilver;
+    line-height: 1.2;
+  }
+
+  &__title {
+    margin-bottom: 7px;
+    font-size: 48px;
+    color: $colorBlack;
+    font-weight: 700;
+    line-height: 42px;
+  }
+
+  &__sub-title {
+    margin-bottom: 16px;
+    font-size: 24px;
+    font-weight: 700;
+    color: $colorBlack;
+    line-height: 18px;
+    line-height: 24px;
+  }
+
+  &__specifics {
+    color: $colorSilver;
+  }
+
+  &__picture {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    max-height: 267px;
+    overflow: hidden;
+  }
+
+  &__weight {
+    display: flex;
+    justify-content: top;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 25px;
+    font-size: 21px;
+    width: 81px;
+    height: 81px;
+    border-radius: 50%;
+    background-color: $colorBlue;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    z-index: 15;
+    color: $colorWhite;
+    line-height: 17px;
+    overflow: hidden;
+  }
+
+  &__weight-value {
+    font-size: 42px;
+    margin-bottom: 11px;
+  }
+
+  &__bottom {
+    text-align: center;
+    font-size: 13px;
+    color: $colorWhite;
+
+    &--disabled {
+      color: $colorYellow;
+    }
+  }
+
+  &__bottom-link {
+    display: inline-block;
+    margin-left: 5px;
+    color: $colorBlue;
+
+    &:hover {
+      transform: background-color 0.5s ease;
+      color: $colorBlueSecondary;
+    }
+  }
+
+  &__bottom-link-text {
+    border-bottom: dashed 1px $colorBlue;
+    font-weight: 700;
+  }
+}
