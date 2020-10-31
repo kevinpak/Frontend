@@ -1,0 +1,17 @@
+@import '../../../styles/app';
+.header{
+  min-height: 50px;
+  padding: 10px 0;
+  background-color: $colorPrimary !important;
+}
+
+.menuButton{
+  color: $colorWhite !important;
+}
+
+.title{
+  font-size: 1.2rem;
+  color: $colorWhite !important;
+  flex-grow: 1;
+}
+

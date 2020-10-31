@@ -1,0 +1,13 @@
+.Accordeon{
+  position: relative;
+  i[class*="icon-"]{
+    font-size: 1.5rem;
+    &.trueAnswer{
+      color: #09b309;
+    }
+    &.falseAnswer{
+      color: #df0030;
+    }
+    
+  }
+}

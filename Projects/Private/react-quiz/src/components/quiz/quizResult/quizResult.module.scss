@@ -1,0 +1,45 @@
+.QuizResult{
+  
+}
+
+.QRHead{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 30px;
+
+  h2{
+    margin-bottom: 0;
+    padding-right: 20px;
+  }
+
+  .QRHeadItem{
+    padding: 0 10px 0;
+
+    &::before{
+      font-size: 1.6rem;
+      color: #607d8b;
+    }
+    &::after{
+      content: "";
+      position: absolute;
+      width: 1px;
+      height: 100%;
+      right: 0;
+      bottom: 0;
+      background-color: #607d8b;
+    }
+
+
+    &.TrueAnswer{
+      &::before{
+        color: #09b309;
+      }
+    }
+    &.FalseAnswer{
+      &::before{
+        color: #df0030;
+      }
+    }
+  }
+}
