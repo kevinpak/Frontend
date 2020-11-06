@@ -1,0 +1,17 @@
+.page-footer {
+  padding-top: 24px;
+  padding-bottom: 19px;
+  background-color: #373c43;
+
+  &__container {
+    padding: 0 30px;
+  }
+
+  p,
+  &__text {
+    margin-bottom: 10px;
+    font-size: 12px;
+    color: #7f8591;
+    line-height: 18px;
+  }
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canvas | Animation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+
+  <section class="section canvas">
+    <div class="section__container">
+      <h1><span>Задание 2</span></h1>
+      <div class="canvas__control">
+        <div class="canvas__control-inner">
+          <div class="canvas__control-item">
+            <label for="canvColor" class="canvas__control-label">Выберите цвет линии</label>
+            <input type="color" name="color" id="canvColor" class="canvas__form-contole">
+          </div>
+          <div class="canvas__control-item">
+            <label for="canvLineWidth" class="canvas__control-label">Выберите толщину линии</label>
+            <input type="range" name="lineWidth" id="canvLineWidth" class="canvas__form-contole js-range" min="2" max="6" value="2">
+          </div>
+          <div class="canvas__control-item">
+            <label for="canvNumberLine" class="canvas__control-label">Количество линий на отрисовку</label>
+            <input type="range" name="numberLine" id="canvNumberLine" class="canvas__form-contole js-range" min="2" max="10" value="2">
+          </div>
+        </div>
+      </div>
+      <canvas id="canvas"></canvas>
+      <div class="canvas__footer">
+        <button id="btn" onclick="clearCanvas()">ОЧИСТИТЬ</button>
+      </div>
+    </div>
+  </section>
+
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+.pay {
+  position: relative;
+
+  &__infos {
+    font-size: 16px;
+    color: #535864;
+
+    &-title {
+      margin-bottom: 16px;
+      max-width: 295px;
+    }
+
+    &-table {
+      margin-bottom: 25px;
+    }
+
+    &-row {
+      &-label {
+        width: 160px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+    }
+  }
+}

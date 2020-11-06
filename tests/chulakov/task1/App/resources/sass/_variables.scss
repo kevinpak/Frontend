@@ -1,0 +1,27 @@
+// COLORS
+$color-black: #000;
+$color-white: #fff;
+$color-black-primary: #101114;
+$color-black-secondary: #3333;
+$color-black-thirdary: #666;
+$color-ghostwhite: #f0f0f0;
+$color-orange: #ffc815;
+$color-chartreuse: #a3cd3b;
+$color-blue: #1698d9;
+$color-silver: #eee;
+$color-red: #fd0808;
+
+// FONTS
+$OpenSans-Regular: "OpenSans-Regular";
+
+// IMAGES PATHS
+$path-png-images: "../images/png/";
+$path-svg-images: "../images/svg/";
+
+// EASING TRANSITIONS
+$duration-normal: 0.4s;
+$easing-back-out: cubic-bezier(0.25, 0.74, 0.22, 1.1);
+$easing-back-in: cubic-bezier(0.47, -0.1, 0.5, -0.06);
+$easing-out: ease-out;
+$easing-in: ease-in;
+$translation-default: all 0.25s ease;

@@ -1,0 +1,13 @@
+// COLOR
+$color-bg-block: #00aeef;
+
+.page-head {
+  padding-top: 46px;
+  background-color: $color-bg-block;
+  overflow: hidden;
+  min-height: 162px;
+
+  &__container {
+    padding: 0 26px;
+  }
+}

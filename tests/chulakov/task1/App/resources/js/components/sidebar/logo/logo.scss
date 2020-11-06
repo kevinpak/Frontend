@@ -1,0 +1,11 @@
+// stylelint-disable no-empty-source
+.logo {
+  max-height: 161px;
+  background-color: #191c24;
+
+  &__link {
+    display: block;
+    max-width: 318px;
+    overflow: hidden;
+  }
+}

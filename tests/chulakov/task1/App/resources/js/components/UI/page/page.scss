@@ -1,0 +1,25 @@
+.page {
+  padding: 86px 0 80px 0;
+
+  &__container {
+    margin: 0 auto;
+    max-width: 960px;
+    padding: 0;
+
+    &--flex {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      overflow: hidden;
+
+      @media (min-width: 320px) {
+        flex-direction: column;
+      }
+
+      @media (min-width: 1000px) {
+        flex-direction: row;
+      }
+    }
+  }
+}
