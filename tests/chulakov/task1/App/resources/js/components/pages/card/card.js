@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useRef} from 'react'
 import './card.scss'
 import H2 from '../../UI/titles/h2'
 import Select from 'react-select'
@@ -9,53 +9,98 @@ import * as Yup from 'yup'
 
 const Card = props => {
 
-  const SignupForm = () => {}
-    const formik = useFormik({
-      initialValues: {
-        num1: '',
-        num2: '',
-        num3: '',
-        num4: '',
-        month: '',
-        year: '',
-        ownerName: '',
-        codeCvv: '',
-      },
-      validationSchema: Yup.object({
-        num1: Yup.string()
-          .min(4, 'Min characters: 4 ')
-          .max(4, 'Max characters: 4')
-          .required('Required'),
-        num2: Yup.string()
-          .min(4, 'Min characters: 4 ')
-          .max(4, 'Max characters: 4')
-          .required('Required'),
-        num3: Yup.string()
-          .min(4, 'Min characters: 4 ')
-          .max(4, 'Max characters: 4')
-          .required('Required'),
-        num4: Yup.string()
-          .min(4, 'Min characters: 4 ')
-          .max(4, 'Max characters: 4')
-          .required('Required'),
-        month: Yup.string()
-          .required('Required'),
-        year: Yup.string()
-          .required('Required'),
-        ownerName: Yup.string()
-          .min(4, 'Min characters: 4 ')
-          .required('Required'),
-        codeCvv: Yup.string()
-          .min(3, 'Min characters: 3 ')
-          .max(3, 'Max characters: 3')
-          .required('Required'),
 
-      }),
-      onSubmit: values => {
-        alert(JSON.stringify(values, null, 2))
-      },
-    })
-  
+  const formik = useFormik({
+    initialValues: {
+      num1: '',
+      num2: '',
+      num3: '',
+      num4: '',
+      month: '',
+      year: '',
+      ownerName: '',
+      codeCvv: '',
+    },
+    validationSchema: Yup.object({
+      num1: Yup.string()
+        .min(4, 'Min characters: 4 ')
+        .max(4, 'Max characters: 4')
+        .required('Required'),
+      num2: Yup.string()
+        .min(4, 'Min characters: 4 ')
+        .max(4, 'Max characters: 4')
+        .required('Required'),
+      num3: Yup.string()
+        .min(4, 'Min characters: 4 ')
+        .max(4, 'Max characters: 4')
+        .required('Required'),
+      num4: Yup.string()
+        .min(4, 'Min characters: 4 ')
+        .max(4, 'Max characters: 4')
+        .required('Required'),
+      month: Yup.string()
+        .required('Required'),
+      year: Yup.string()
+        .required('Required'),
+      ownerName: Yup.string()
+        .min(4, 'Min characters: 4 ')
+        .required('Required'),
+      codeCvv: Yup.string()
+        .min(3, 'Min characters: 3 ')
+        .max(3, 'Max characters: 3')
+        .required('Required'),
+
+    }),
+    onSubmit: values => {
+      alert(JSON.stringify(values, null, 2))
+    },
+  })
+  const [num1Val, setNum1Val] = useState('')
+  const [num2Val, setNum2Val] = useState('')
+  const [num3Val, setNum3Val] = useState('')
+  const [num4Val, setNum4Val] = useState('')
+  const [codeCvvVal, setCodeCvvVal] = useState('')
+
+  const num1 = useRef('')
+  const num2 = useRef('')
+  const num3 = useRef('')
+  const num4 = useRef('')
+  const month  = useRef('')
+  const codeCvv = useRef('')
+
+  const handleChange = (currentField, nextField, setFieldState, maxCar) => {
+    const field = currentField.current
+    const fieldValue = field.value
+    
+    if(fieldValue.length <= maxCar){
+      setFieldState(fieldValue)
+      setFieldValue(currentField, fieldValue)
+      nextField&&fieldValue.length===maxCar ? nextField.current.focus(): null
+    }
+  }
+
+  const setFieldValue = (currentField, fieldValue) => {
+    switch (currentField) {
+      case num1:
+        formik.values.num1 = fieldValue
+        break;
+      case num2:
+        formik.values.num2 = fieldValue
+        break;
+      case num3:
+        formik.values.num3 = fieldValue
+        break;
+      case num4:
+        formik.values.num4 = fieldValue
+        break;
+      case codeCvv:
+        formik.values.codeCvv = fieldValue
+        break;
+      default:
+
+        break;
+    }
+  }
 
 
   return (
@@ -74,9 +119,10 @@ const Card = props => {
                     name="num1"
                     type="number"
                     maxLength="4"
-                    onChange={formik.handleChange}
+                    onChange={() => {handleChange(num1, num2, setNum1Val, 4)}}
                     onBlur={formik.handleBlur}
                     value={formik.values.num1}
+                    ref={num1}
                   />
                   <input
                     className={`${formik.touched.num2 && formik.errors.num2? 'control-form--error': null} control-form card-num__field`}
@@ -84,9 +130,10 @@ const Card = props => {
                     name="num2"
                     type="number"
                     maxLength="4"
-                    onChange={formik.handleChange}
+                    onChange={() => {handleChange(num2, num3, setNum2Val, 4)}}
                     onBlur={formik.handleBlur}
                     value={formik.values.num2}
+                    ref={num2}
                   />
                   <input
                     className={`${formik.touched.num3 && formik.errors.num3? 'control-form--error': null} control-form card-num__field`}
@@ -94,9 +141,10 @@ const Card = props => {
                     name="num3"
                     type="number"
                     maxLength="4"
-                    onChange={formik.handleChange}
+                    onChange={() => {handleChange(num3, num4, setNum3Val, 4)}}
                     onBlur={formik.handleBlur}
                     value={formik.values.num3}
+                    ref={num3}
                   />
                   <input
                     className={`${formik.touched.num4 && formik.errors.num4? 'control-form--error': null} control-form card-num__field`}
@@ -104,9 +152,10 @@ const Card = props => {
                     name="num4"
                     type="number"
                     maxLength="4"
-                    onChange={formik.handleChange}
+                    onChange={() => {handleChange(num4, month, setNum4Val, 4)}}
                     onBlur={formik.handleBlur}
                     value={formik.values.num4}
+                    ref={num4}
                   />
                 </div>
               </div>
@@ -120,6 +169,7 @@ const Card = props => {
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     value={formik.values.month}
+                    ref={month}
                   >
                     <option value=""></option>
                     <option value="01">01</option>
@@ -174,11 +224,12 @@ const Card = props => {
                     className={`${formik.touched.codeCvv && formik.errors.codeCvv? 'control-form--error': null} control-form code-cvv__field`}
                     id="card-num"
                     name="codeCvv"
-                    type="numbe"
+                    type="number"
                     maxLength="3"
-                    onChange={formik.handleChange}
+                    onChange={() => {handleChange(codeCvv, '', setCodeCvvVal, 3)}}
                     onBlur={formik.handleBlur}
                     value={formik.values.codeCvv}
+                    ref={codeCvv}
                   />
                   <a href="#" className="card__form-help">?</a>
                 </div>
